@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class ObjectivesController < ApplicationController
-  before_action :set_objective, only: [:show, :edit, :update, :destroy]
+  before_action :set_objective, only: %i[show edit update destroy]
 
   # GET /objectives
   # GET /objectives.json
@@ -9,8 +11,7 @@ class ObjectivesController < ApplicationController
 
   # GET /objectives/1
   # GET /objectives/1.json
-  def show
-  end
+  def show; end
 
   # GET /objectives/new
   def new
@@ -18,8 +19,7 @@ class ObjectivesController < ApplicationController
   end
 
   # GET /objectives/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /objectives
   # POST /objectives.json
@@ -28,11 +28,21 @@ class ObjectivesController < ApplicationController
 
     respond_to do |format|
       if @objective.save
-        format.html { redirect_to @objective, notice: 'Objective was successfully created.' }
-        format.json { render :show, status: :created, location: @objective }
+        format.html do
+          redirect_to @objective,
+                      notice: 'Objective was successfully created.'
+        end
+        format.json do
+          render :show,
+                 status: :created,
+                 location: @objective
+        end
       else
         format.html { render :new }
-        format.json { render json: @objective.errors, status: :unprocessable_entity }
+        format.json do
+          render json: @objective.errors,
+                 status: :unprocessable_entity
+        end
       end
     end
   end
@@ -42,11 +52,21 @@ class ObjectivesController < ApplicationController
   def update
     respond_to do |format|
       if @objective.update(objective_params)
-        format.html { redirect_to @objective, notice: 'Objective was successfully updated.' }
-        format.json { render :show, status: :ok, location: @objective }
+        format.html do
+          redirect_to @objective,
+                      notice: 'Objective was successfully updated.'
+        end
+        format.json do
+          render :show,
+                 status: :ok,
+                 location: @objective
+        end
       else
         format.html { render :edit }
-        format.json { render json: @objective.errors, status: :unprocessable_entity }
+        format.json do
+          render json: @objective.errors,
+                 status: :unprocessable_entity
+        end
       end
     end
   end
@@ -56,19 +76,24 @@ class ObjectivesController < ApplicationController
   def destroy
     @objective.destroy
     respond_to do |format|
-      format.html { redirect_to objectives_url, notice: 'Objective was successfully destroyed.' }
+      format.html do
+        redirect_to objectives_url,
+                    notice: 'Objective was successfully destroyed.'
+      end
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_objective
-      @objective = Objective.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def objective_params
-      params.fetch(:objective, {})
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_objective
+    @objective = Objective.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet,
+  # only allow the white list through.
+  def objective_params
+    params.fetch(:objective, {})
+  end
 end

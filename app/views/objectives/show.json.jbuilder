@@ -1,1 +1,3 @@
-json.partial! "objectives/objective", objective: @objective
+# frozen_string_literal: true
+
+json.partial! 'objectives/objective', objective: @objective
