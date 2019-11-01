@@ -16,7 +16,7 @@ gem 'uglifier', '>= 1.3.0'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 gem 'bcrypt', '~> 3.1.7'
-gem 'devise', '~> 4.6', '>= 4.6.2'
+gem 'devise', '~> 4.7'
 gem 'omniauth', '~> 1.9'
 gem 'omniauth-google-oauth2', '~> 0.6.1'
 
